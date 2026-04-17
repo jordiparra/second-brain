@@ -82,6 +82,14 @@ Adjust the path if you cloned somewhere else.
 
 **If you use [auto-mode](https://docs.claude.com/en/docs/claude-code/settings#permission-modes)** (Claude executes autonomously without stopping for routine permission prompts), you can capture and query from anywhere. The global `CLAUDE.md` snippet from step 3 tells Claude where the vault lives, and the skills `cd` into it themselves. Drop a PDF in `~/Downloads`, paste a URL mid-conversation, or ask a personal question from any project directory — it all routes correctly.
 
+For example, mid-session in an unrelated project directory, you can paste a link and ask Claude to save it:
+
+```
+> save this to the wiki: https://stephango.com/vault
+```
+
+Claude recognises the soft-launch trigger, spawns `notes-ingest`, fetches the article, routes it to `wiki/articles/`, archives the raw HTML under `sources/articles/`, adds wikilinks to related entries (author, topics), updates `wiki-index.md`, and prepends a line to `wiki-changelog.md` — all without you leaving the directory you were working in.
+
 **Without auto-mode**, prefer starting the session from the vault so the vault's own `CLAUDE.md` auto-loads and relative paths resolve without extra prompts:
 
 ```sh
