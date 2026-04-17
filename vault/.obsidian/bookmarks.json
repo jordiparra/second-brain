@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "type": "group",
+      "ctime": 1744624800000,
+      "title": "AI",
+      "items": []
+    },
+    {
+      "type": "group",
+      "ctime": 1744624800100,
+      "title": "Lists",
+      "items": []
+    },
+    {
+      "type": "group",
+      "ctime": 1744624800200,
+      "title": "Projects",
+      "items": []
+    }
+  ]
+}

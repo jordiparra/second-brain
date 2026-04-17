@@ -1,0 +1,15 @@
+{
+  "promptDelete": false,
+  "propertiesInDocument": "hidden",
+  "userIgnoreFilters": [
+    "/CLAUDE.md",
+    "\"/README.md\"",
+    "/wiki-index.md",
+    "/wiki-log.md",
+    "/log-index.md",
+    "/sortspec.md"
+  ],
+  "defaultViewMode": "preview",
+  "showInlineTitle": false,
+  "alwaysUpdateLinks": true
+}
