@@ -78,15 +78,17 @@ So Claude checks your notes before answering personal questions. Add a section l
 
 Adjust the path if you cloned somewhere else.
 
-### 4. Work from the vault
+### 4. Working directory
 
-When you want Claude to write into the wiki, start the session with `vault/` as the working directory so the vault's `CLAUDE.md` auto-loads and relative paths resolve:
+**If you use [auto-mode](https://docs.claude.com/en/docs/claude-code/settings#permission-modes)** (Claude executes autonomously without stopping for routine permission prompts), you can capture and query from anywhere. The global `CLAUDE.md` snippet from step 3 tells Claude where the vault lives, and the skills `cd` into it themselves. Drop a PDF in `~/Downloads`, paste a URL mid-conversation, or ask a personal question from any project directory — it all routes correctly.
+
+**Without auto-mode**, prefer starting the session from the vault so the vault's own `CLAUDE.md` auto-loads and relative paths resolve without extra prompts:
 
 ```sh
 cd ~/second-brain/vault && claude
 ```
 
-For quick queries from anywhere, `notes-query` still works — it reads the vault path from your global `CLAUDE.md`. See **Using it** below for full details.
+See **Using it** below for how ingestion, querying, and wrapping work in practice.
 
 ## The four skills
 
