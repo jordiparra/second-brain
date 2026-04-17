@@ -27,9 +27,9 @@ The same category can exist in both places. Project context wins over category �
 
 **wiki-index.md** — Auto-maintained by Claude. Update whenever entries are added or removed.
 
-**log-index.md** — One line per session. Read this first to find relevant past sessions.
+**sessions-index.md** — One row per session, newest-first. Read this first to find relevant past sessions. New rows are prepended to the top; existing rows are never modified.
 
-**wiki-log.md** — Append-only. One line per change event. Never edit existing entries, only append.
+**wiki-changelog.md** — Append-only record of wiki changes, newest-first. One paragraph per change event, prepended to the top. Never edit existing entries, only prepend new ones.
 
 **Bookmarks** — Obsidian Bookmarks (`.obsidian/bookmarks.json`) provide sidebar shortcuts grouped as AI, Lists, and Projects. Claude maintains this file.
 
@@ -136,17 +136,17 @@ Decisions are always inline — never standalone files. When the user shares a d
 
 ### Session log
 
-Run `/wrap` to end a session. The skill writes the log file, updates `log-index.md`, `wiki-log.md`, and `wiki-index.md`, then prompts to `/clear`.
+Run `/wrap` to end a session. The skill writes the log file, updates `sessions-index.md`, `wiki-changelog.md`, and `wiki-index.md` (all newest-first), then prompts to `/clear`.
 
 ### Index maintenance
 
 - **wiki-index.md** — Update whenever entries are added or removed. Maintain alphabetical order within each category section. Update counts.
-- **wiki-log.md** — Append one line per change event: `- YYYY-MM-DD — action: description`. Never edit existing entries.
-- **log-index.md** — Append one row per session log.
+- **wiki-changelog.md** — Prepend one paragraph per change event to the top: `**YYYY-MM-DD** — Capitalized verb describing what changed and why.` Use verbs like Ingested, Updated, Added, Fixed, Renamed, Created. One paragraph per entry, blank line between entries. Never edit existing entries.
+- **sessions-index.md** — Prepend one row per session log to the top of the table.
 
 ## Obsidian settings
 
 - **Wikilinks:** Enabled (shortest path).
-- **Excluded files:** `CLAUDE.md`, `README.md`, `sortspec.md`, `wiki-index.md`, `wiki-log.md`, `log-index.md` — hidden from sidebar but accessible on disk.
+- **Excluded files:** `CLAUDE.md`, `README.md`, `sortspec.md`, `wiki-index.md`, `wiki-changelog.md`, `sessions-index.md` — hidden from sidebar but accessible on disk.
 - **Templates folder:** `templates/`
 - **Attachments for projects:** inside each project's subfolder.

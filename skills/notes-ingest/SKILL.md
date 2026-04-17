@@ -74,7 +74,7 @@ Linking happens at ingest time — don't defer it. For every entry created or up
 ### 6. Update the index and log
 
 - Add new entries to `wiki-index.md` in the correct category section, maintaining alphabetical order and updating counts
-- Append to `wiki-log.md`: `- YYYY-MM-DD — ingest: [source title] → [pages created/updated]`
+- Prepend to `wiki-changelog.md` (newest-first, one paragraph per entry): `**YYYY-MM-DD** — Ingested [source title] into [pages created/updated], because [reason].` Use a capitalized verb (Ingested, Updated, Added, Created) leading the sentence. Never edit existing entries.
 
 ### 7. Create hub pages if needed
 

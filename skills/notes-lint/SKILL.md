@@ -19,7 +19,7 @@ Health-check the personal notes. Structure is in the vault's `CLAUDE.md` (auto-l
 
 1. Read the authoring conventions: `CONVENTIONS.md` (at the vault root).
 2. Read `wiki-index.md`.
-3. Read `log-index.md`.
+3. Read `sessions-index.md` (newest-first).
 4. List all `.md` files in `wiki/` recursively.
 
 ## Checks
@@ -100,8 +100,10 @@ Fix straightforward issues directly. Ask about judgment calls.
 
 ## After fixes
 
-Append to `wiki-log.md`:
+Prepend to `wiki-changelog.md` (newest-first, one paragraph per entry):
 
 ```
-- YYYY-MM-DD — lint: summary of findings and fixes
+**YYYY-MM-DD** — Fixed [summary of findings and fixes].
 ```
+
+Use a capitalized verb leading the sentence. Blank line between entries. Never edit existing entries.

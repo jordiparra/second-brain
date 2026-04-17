@@ -17,7 +17,7 @@ You are writing a curated session recap for the personal notes. Run this from th
 ## Before you start
 
 1. Read the authoring conventions: `CONVENTIONS.md` (at the vault root).
-2. Read `log-index.md` to see existing sessions.
+2. Read `sessions-index.md` (newest-first) to see existing sessions.
 
 ## What to capture
 
@@ -102,17 +102,19 @@ Grep existing log tags (`grep -h "^tags:" log/*.md`) to stay consistent, but cre
 
 **Wikilinks in body text:** Link first mentions of wiki entities — projects, prototypes, trips, places, people, and concepts. Unresolved links are fine (they become breadcrumbs in Graph View). Don't over-link — skip generic terms and only link where the connection is meaningful.
 
-### 2. Append to `log-index.md`
+### 2. Prepend to `sessions-index.md`
 
-Add one row to the table:
+Prepend one row to the top of the table (newest-first):
 
 ```
 | YYYY-MM-DD | [[YYYY-MM-DD-HHMM]] | One-line summary |
 ```
 
+Insert the new row directly below the header separator row. Never modify existing rows.
+
 ### 3. If wiki entries were added or modified
 
-- Append to `wiki-log.md` — one line per change: what, when, which session
+- Prepend to `wiki-changelog.md` — one paragraph per change, added to the top (newest-first). Format: `**YYYY-MM-DD** — Capitalized verb describing what changed and why.` Use verbs like Ingested, Updated, Added, Fixed, Renamed, Created. Blank line between entries. Never edit existing entries.
 - Update `wiki-index.md` — add/remove entries in the relevant category section
 
 ## After writing

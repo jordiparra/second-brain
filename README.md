@@ -17,8 +17,8 @@ second-brain/
 │   ├── sources/          ← Empty — raw source archive
 │   ├── log/              ← Empty — session recaps
 │   ├── wiki-index.md     ← Seed scaffold
-│   ├── wiki-log.md       ← Seed scaffold
-│   ├── log-index.md      ← Seed scaffold
+│   ├── wiki-changelog.md ← Seed scaffold
+│   ├── sessions-index.md ← Seed scaffold
 │   └── .obsidian/        ← Obsidian settings: Bases, Bookmarks, plugins
 └── skills/               ← 4 Claude Code skills
     ├── notes-ingest/
@@ -93,7 +93,7 @@ For quick queries from anywhere, `notes-query` still works — it just reads the
 | Skill | Purpose |
 |-------|---------|
 | `notes-ingest` | Process a source (article, URL, PDF, screenshot, pasted text) into wiki entries. Archives the raw source, creates entries, cross-links, updates the index. |
-| `notes-query` | Answer questions from the wiki. Reads `wiki-index.md` + `log-index.md`, drills into relevant pages, synthesizes. |
+| `notes-query` | Answer questions from the wiki. Reads `wiki-index.md` + `sessions-index.md`, drills into relevant pages, synthesizes. |
 | `notes-lint` | Audit the wiki for broken links, index drift, missing frontmatter, tag gaps, orphan pages. |
 | `wrap` | End-of-session skill. Writes a curated `log/YYYY-MM-DD-HHMM.md` with learnings, decisions, and course corrections, updates indexes, then prompts `/clear`. |
 
