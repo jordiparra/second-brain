@@ -8,23 +8,23 @@ Assumes you already use [Claude Code](https://claude.com/claude-code) and [Obsid
 
 ```
 second-brain/
-├── vault/                ← The Obsidian vault (open this in Obsidian)
-│   ├── CLAUDE.md         ← Structure and navigation (auto-loaded by Claude Code)
-│   ├── CONVENTIONS.md    ← Authoring rules (frontmatter, linking, placement, routing)
-│   ├── lists/            ← 16 Base views (Books, Movies, Trips, …)
-│   ├── templates/        ← 32 entry templates
-│   ├── wiki/             ← Empty — your entries go here
-│   ├── sources/          ← Empty — raw source archive
-│   ├── log/              ← Empty — session recaps
-│   ├── wiki-index.md     ← Seed scaffold
-│   ├── wiki-changelog.md ← Seed scaffold
-│   ├── sessions-index.md ← Seed scaffold
-│   └── .obsidian/        ← Obsidian settings: Bases, Bookmarks, plugins
-└── skills/               ← 4 Claude Code skills
-    ├── notes-ingest/
-    ├── notes-query/
-    ├── notes-lint/
-    └── wrap/
+├── vault/                  ← The Obsidian vault (open this in Obsidian)
+│   ├── CLAUDE.md           ← Structure and navigation (auto-loaded by Claude Code)
+│   ├── CONVENTIONS.md      ← Authoring rules (frontmatter, linking, placement, routing)
+│   ├── lists/              ← 16 Base views for browsing (Books, Movies, Trips, …)
+│   ├── templates/          ← 32 entry templates (one per category)
+│   ├── wiki/               ← Empty — entries go here, grouped by category or project
+│   ├── sources/            ← Empty — raw source archive (immutable after capture)
+│   ├── log/                ← Empty — session recaps written by the /wrap skill
+│   ├── wiki-index.md       ← Directory of all entries, grouped by category
+│   ├── wiki-changelog.md   ← Append-only record of wiki changes (newest-first)
+│   ├── sessions-index.md   ← Directory of session logs with dates and summaries (newest-first)
+│   └── .obsidian/          ← Obsidian settings: Bases, Bookmarks, plugins
+└── skills/                 ← 4 Claude Code skills
+    ├── notes-ingest/       ← Capture sources into wiki entries
+    ├── notes-query/        ← Answer questions from the wiki
+    ├── notes-lint/         ← Audit structure, links, frontmatter, tags
+    └── wrap/               ← End-of-session recap + /clear prompt
 ```
 
 ## How it works
