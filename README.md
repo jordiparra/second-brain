@@ -146,7 +146,7 @@ Press **⌘G** inside Obsidian to open Graph View. Every entry is a node, every 
 
 ## Credits
 
-Based on the personal Obsidian + Claude Code setup used by [@jordiparra](https://github.com/jordiparra). Inspired by:
+Inspired by:
 
 - [**Why 2026 Is the Year to Build a Second Brain** — Nate B Jones](https://www.youtube.com/watch?v=0TpON5T-Sw4) — capture-and-route methodology, "one behavior from the human", design-for-restart.
 - [**How I use Obsidian** — Steph Ango (kepano)](https://stephango.com/vault) — properties as the primary structure, Bases for browsing, one file per entity.
