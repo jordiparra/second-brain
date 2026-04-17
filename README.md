@@ -1,6 +1,6 @@
 # second-brain
 
-A starter kit for a personal knowledge base built as an Obsidian vault, with four Claude Code skills for AI-assisted capture, querying, linting, and session logging. No content included — just the scaffolding, conventions, templates, and skills.
+A tailored approach to a personal knowledge wiki: Obsidian for structure, Claude Code for capture and query. Inspired by kepano, Karpathy, and Nate B Jones. No content included — just the scaffolding, conventions, templates, and skills.
 
 Assumes you already use [Claude Code](https://claude.com/claude-code) and [Obsidian](https://obsidian.md/).
 
