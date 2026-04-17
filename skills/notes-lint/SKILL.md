@@ -100,10 +100,10 @@ Fix straightforward issues directly. Ask about judgment calls.
 
 ## After fixes
 
-Prepend to `wiki-changelog.md` (newest-first, one paragraph per entry):
+Prepend to `wiki-changelog.md` (newest-first) **one cohesive paragraph covering the whole lint pass**:
 
 ```
-**YYYY-MM-DD** — Fixed [summary of findings and fixes].
+**YYYY-MM-DD** — Fixed [summary of findings and fixes, enumerating affected files].
 ```
 
-Use a capitalized verb leading the sentence. Blank line between entries. Never edit existing entries.
+Use a capitalized verb leading the sentence. Enumerate affected files inside the paragraph rather than writing one entry per fix. Blank line between entries. Never edit existing entries.

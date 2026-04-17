@@ -49,6 +49,7 @@ Save the original source to `sources/` following the structure in CONVENTIONS.md
 - Project-scoped sources go under `sources/projects/[project]/`
 - Standalone sources go under `sources/[category]/` (e.g., `sources/articles/`)
 - Keep the original content intact — `sources/` is immutable after filing
+- **Scan for secrets before archiving.** If the source contains API keys, tokens, passwords, recovery phrases, card numbers, or anything that would be a breach if the vault leaked: redact before archiving (crop screenshots, blank cells in PDFs, strip credential lines), or extract just the useful text into a new file and discard the original. Reference secrets by location (`key in .env`, `token in 1Password`) or with `<REDACTED:type>` — never by value. See `CONVENTIONS.md` → Safety.
 
 ### 4. Create wiki entries
 
@@ -74,7 +75,7 @@ Linking happens at ingest time — don't defer it. For every entry created or up
 ### 6. Update the index and log
 
 - Add new entries to `wiki-index.md` in the correct category section, maintaining alphabetical order and updating counts
-- Prepend to `wiki-changelog.md` (newest-first, one paragraph per entry): `**YYYY-MM-DD** — Ingested [source title] into [pages created/updated], because [reason].` Use a capitalized verb (Ingested, Updated, Added, Created) leading the sentence. Never edit existing entries.
+- Prepend to `wiki-changelog.md` (newest-first) **one cohesive paragraph per ingest** covering the entire operation: `**YYYY-MM-DD** — Ingested [source title] into [pages created/updated], because [reason].` Use a capitalized verb (Ingested, Updated, Added, Created) leading the sentence. Enumerate affected files inside the paragraph rather than writing one entry per file. Never edit existing entries.
 
 ### 7. Create hub pages if needed
 

@@ -71,3 +71,7 @@ The notes are the user's second brain. **When the user asks any personal questio
 5. Only after checking: say the info isn't available.
 
 **No automatic filing** — only file new content if the user asks.
+
+## Safety
+
+Never write secrets anywhere in the vault — API keys, tokens, passwords, recovery phrases, card numbers, or anything that would be a breach if the vault leaked. This applies to session logs and changelog entries too. Redact before archiving external sources. When referencing a secret, name its location (e.g., `key in .env`) or use `<REDACTED:type>`. See `CONVENTIONS.md` → Safety for the full rules.

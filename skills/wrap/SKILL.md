@@ -37,6 +37,7 @@ Review the full conversation and extract **only what would help a future session
 - Implementation details that are in the code or commit history
 - Things already captured as wiki/ entries or Claude memory
 - Anything the user could re-derive by reading the current state of files
+- **Secrets.** Never write API keys, tokens, passwords, recovery phrases, card numbers, or any credential value into the log. If the session touched one, describe the action without echoing the value (*"rotated the gh OAuth token"*, not the token itself). See `CONVENTIONS.md` → Safety.
 
 ### Course corrections specifically
 
@@ -114,7 +115,7 @@ Insert the new row directly below the header separator row. Never modify existin
 
 ### 3. If wiki entries were added or modified
 
-- Prepend to `wiki-changelog.md` — one paragraph per change, added to the top (newest-first). Format: `**YYYY-MM-DD** — Capitalized verb describing what changed and why.` Use verbs like Ingested, Updated, Added, Fixed, Renamed, Created. Blank line between entries. Never edit existing entries.
+- Prepend to `wiki-changelog.md` — one paragraph per **cohesive change thread**, added to the top (newest-first). Format: `**YYYY-MM-DD** — Capitalized verb describing what changed and why.` Use verbs like Ingested, Updated, Added, Fixed, Renamed, Created. Blank line between entries. Never edit existing entries. **One entry per cohesive change, not per edit** — a single thread of work across many files is one entry (enumerate the files inside the paragraph). Unrelated changes in the same session get separate entries. Follow-on fixes from an earlier change fold into that change's entry.
 - Update `wiki-index.md` — add/remove entries in the relevant category section
 
 ## After writing

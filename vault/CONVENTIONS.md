@@ -141,8 +141,33 @@ Run `/wrap` to end a session. The skill writes the log file, updates `sessions-i
 ### Index maintenance
 
 - **wiki-index.md** — Update whenever entries are added or removed. Maintain alphabetical order within each category section. Update counts.
-- **wiki-changelog.md** — Prepend one paragraph per change event to the top: `**YYYY-MM-DD** — Capitalized verb describing what changed and why.` Use verbs like Ingested, Updated, Added, Fixed, Renamed, Created. One paragraph per entry, blank line between entries. Never edit existing entries.
+- **wiki-changelog.md** — Prepend one paragraph per **cohesive change thread** to the top: `**YYYY-MM-DD** — Capitalized verb describing what changed and why, with wikilinks and paths as needed.` Use verbs like Ingested, Updated, Added, Fixed, Renamed, Created. Blank line between entries. Never edit existing entries.
+  - **One entry per cohesive change, not per edit.** A single thread of work that touches many files across several tool calls is one entry — enumerate the affected files inside the paragraph. Unrelated changes in the same session get separate entries. Follow-on fixes directly caused by an earlier change in the same session fold into that change's entry rather than spawning their own.
+  - **Append-only, never consolidate retroactively.** Once an entry is written, don't edit it to merge in later work — prepend a new entry instead. The "one entry per thread" rule applies at write time, not as a cleanup step.
 - **sessions-index.md** — Prepend one row per session log to the top of the table.
+
+## Safety
+
+The vault is committed to git and ingests external material (screenshots, docs, PDFs, pasted content) that may carry credentials the sender didn't flag. **Treat the entire vault as not safe for secrets** — `wiki/`, `sources/`, `log/`, and the root-level index files (`wiki-index.md`, `wiki-changelog.md`, `sessions-index.md`) are all committed.
+
+**Never write anywhere in the vault:**
+- API keys, tokens, OAuth secrets, session cookies, bearer tokens
+- Passwords, passphrases, recovery phrases, private keys, certificates
+- Full credit card or bank account numbers
+- Anything that would be a breach if the vault leaked
+
+This applies to session logs and changelog entries too — when recapping a session that touched credentials, describe the action without echoing the value.
+
+**When ingesting a source that contains such data:**
+- **Redact before archiving.** `sources/` is immutable after capture — don't archive raw material with live credentials in it. Crop screenshots, blank cells in PDFs, strip token lines from pasted docs.
+- **Reference by location, not value.** In wiki pages and logs, write `key in .env` or `token in 1Password` — don't echo the actual value. This is the preferred form whenever the secret has a known home.
+- **Extract, don't archive whole.** If a mixed-content source (e.g., a screenshot with both a booking code and a card number) has useful info alongside secrets, extract just the useful text into a new file and redact or discard the original.
+
+**Redaction syntax:**
+- `<REDACTED>` or typed `<REDACTED:type>` (e.g. `<REDACTED:api-key>`, `<REDACTED:jwt>`, `<REDACTED:card>****1234`) when quoting output that contained a value.
+- `<YOUR_API_KEY>` / `<YOUR_TOKEN>` only in example code where a reader substitutes their own value — never to hide a real one.
+
+**When unsure:** ask before archiving. A minute of friction beats a credential in git history.
 
 ## Obsidian settings
 
