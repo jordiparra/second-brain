@@ -86,7 +86,7 @@ When you want Claude to write into the wiki, start the session with `vault/` as 
 cd ~/second-brain/vault && claude
 ```
 
-For quick queries from anywhere, `notes-query` still works — it just reads the path from your global `CLAUDE.md`.
+For quick queries from anywhere, `notes-query` still works — it reads the vault path from your global `CLAUDE.md`. See **Using it** below for full details.
 
 ## The four skills
 
@@ -96,6 +96,36 @@ For quick queries from anywhere, `notes-query` still works — it just reads the
 | `notes-query` | Answer questions from the wiki. Reads `wiki-index.md` + `sessions-index.md`, drills into relevant pages, synthesizes. |
 | `notes-lint` | Audit the wiki for broken links, index drift, missing frontmatter, tag gaps, orphan pages. |
 | `wrap` | End-of-session skill. Writes a curated `log/YYYY-MM-DD-HHMM.md` with learnings, decisions, and course corrections, updates indexes, then prompts `/clear`. |
+
+## Using it
+
+### Ingesting a source
+
+Two ways — both work from inside the vault (`cd ~/second-brain/vault && claude`):
+
+- **Explicit:** `/notes-ingest <path-or-url-or-pasted-content>`. Call the skill directly when you want deterministic routing.
+- **Soft launch:** just share the source in conversation — paste a URL, drop a file path, send a screenshot, or say *"save this"* / *"add this to the wiki"*. The skill's description triggers it automatically and Claude routes the content to the right category.
+
+Either way, Claude reads the source end-to-end, picks a category, creates the wiki entry with frontmatter and wikilinks, archives the raw source under `sources/`, updates `wiki-index.md`, and prepends an entry to `wiki-changelog.md`. If routing confidence is low, it asks before filing.
+
+### Querying the wiki
+
+- **Explicit:** `/notes-query <question>`.
+- **Soft launch:** ask any personal question from any working directory — *"where am I staying in Berlin?"*, *"what books have I read about design?"*, *"any restaurant recs in Barcelona?"*. The global `CLAUDE.md` snippet from setup step 3 tells Claude to check the wiki first for personal questions, so `notes-query` triggers automatically. No need to `cd` anywhere for quick lookups.
+
+Claude answers with wikilink citations (`According to [[page-name]], …`) and says so clearly when the wiki has nothing relevant.
+
+### Wrapping a session
+
+Run `/wrap` at the end of a working session. It captures non-obvious context — why you made a choice, what didn't work, course corrections — so the next session can pick up cold. Then it prompts `/clear`.
+
+### Linting
+
+Run `/notes-lint` **weekly**, or after a burst of ingestion (e.g. 10+ new entries in a sitting). It catches broken wikilinks, index drift, missing tags, orphan pages, and missing hub pages. Weekly is enough for a wiki under ~500 entries; stretch to biweekly once the structure settles and ingestion slows.
+
+## Viewing connections in Obsidian
+
+Press **⌘G** inside Obsidian to open Graph View. Every entry is a node, every `[[wikilink]]` an edge — books cluster around shared genres, trips pull in their places and restaurants, projects connect to their DODs and references, session logs mesh with the entries they touched. The conventions' insistence on wikilinks *inside frontmatter* (not plain strings) exists specifically to make this graph dense and navigable. Enable the **Tags** filter in Graph View to also see shared tags as connecting nodes.
 
 ## Customising for yourself
 
