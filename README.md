@@ -90,7 +90,7 @@ For example, mid-session in an unrelated project directory, you can paste a link
 
 Claude recognises the soft-launch trigger, spawns `notes-ingest`, fetches the article, routes it to `wiki/articles/`, archives the raw HTML under `sources/articles/`, adds wikilinks to related entries (author, topics), updates `wiki-index.md`, and prepends a line to `wiki-changelog.md` — all without you leaving the directory you were working in.
 
-**Without auto-mode**, prefer starting the session from the vault so the vault's own `CLAUDE.md` auto-loads and relative paths resolve without extra prompts:
+**Without auto-mode**, launch Claude from the vault to ingest content — less convenient, but avoids extra permission prompts:
 
 ```sh
 cd ~/second-brain/vault && claude
