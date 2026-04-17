@@ -19,7 +19,7 @@ Health-check the personal notes. Structure is in the vault's `CLAUDE.md` (auto-l
 
 1. Read the authoring conventions: `CONVENTIONS.md` (at the vault root).
 2. Read `wiki-index.md`.
-3. Read `sessions-index.md` (newest-first).
+3. Read `log-index.md` (newest-first).
 4. List all `.md` files in `wiki/` recursively.
 
 ## Checks

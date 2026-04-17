@@ -27,7 +27,7 @@ The same category can exist in both places. Project context wins over category �
 
 **wiki-index.md** — Auto-maintained by Claude. Update whenever entries are added or removed.
 
-**sessions-index.md** — One row per session, newest-first. Read this first to find relevant past sessions. New rows are prepended to the top; existing rows are never modified.
+**log-index.md** — One row per session, newest-first. Read this first to find relevant past sessions. New rows are prepended to the top; existing rows are never modified.
 
 **wiki-changelog.md** — Append-only record of wiki changes, newest-first. One paragraph per change event, prepended to the top. Never edit existing entries, only prepend new ones.
 
@@ -136,7 +136,7 @@ Decisions are always inline — never standalone files. When the user shares a d
 
 ### Session log
 
-Run `/wrap` to end a session. The skill writes the log file, updates `sessions-index.md`, `wiki-changelog.md`, and `wiki-index.md` (all newest-first), then prompts to `/clear`.
+Run `/wrap` to end a session. The skill writes the log file, updates `log-index.md`, `wiki-changelog.md`, and `wiki-index.md` (all newest-first), then prompts to `/clear`.
 
 ### Index maintenance
 
@@ -144,11 +144,11 @@ Run `/wrap` to end a session. The skill writes the log file, updates `sessions-i
 - **wiki-changelog.md** — Prepend one paragraph per **cohesive change thread** to the top: `**YYYY-MM-DD** — Capitalized verb describing what changed and why, with wikilinks and paths as needed.` Use verbs like Ingested, Updated, Added, Fixed, Renamed, Created. Blank line between entries. Never edit existing entries.
   - **One entry per cohesive change, not per edit.** A single thread of work that touches many files across several tool calls is one entry — enumerate the affected files inside the paragraph. Unrelated changes in the same session get separate entries. Follow-on fixes directly caused by an earlier change in the same session fold into that change's entry rather than spawning their own.
   - **Append-only, never consolidate retroactively.** Once an entry is written, don't edit it to merge in later work — prepend a new entry instead. The "one entry per thread" rule applies at write time, not as a cleanup step.
-- **sessions-index.md** — Prepend one row per session log to the top of the table.
+- **log-index.md** — Prepend one row per session log to the top of the table.
 
 ## Safety
 
-The vault is committed to git and ingests external material (screenshots, docs, PDFs, pasted content) that may carry credentials the sender didn't flag. **Treat the entire vault as not safe for secrets** — `wiki/`, `sources/`, `log/`, and the root-level index files (`wiki-index.md`, `wiki-changelog.md`, `sessions-index.md`) are all committed.
+The vault is committed to git and ingests external material (screenshots, docs, PDFs, pasted content) that may carry credentials the sender didn't flag. **Treat the entire vault as not safe for secrets** — `wiki/`, `sources/`, `log/`, and the root-level index files (`wiki-index.md`, `wiki-changelog.md`, `log-index.md`) are all committed.
 
 **Never write anywhere in the vault:**
 - API keys, tokens, OAuth secrets, session cookies, bearer tokens
@@ -172,6 +172,6 @@ This applies to session logs and changelog entries too — when recapping a sess
 ## Obsidian settings
 
 - **Wikilinks:** Enabled (shortest path).
-- **Excluded files:** `CLAUDE.md`, `README.md`, `sortspec.md`, `wiki-index.md`, `wiki-changelog.md`, `sessions-index.md` — hidden from sidebar but accessible on disk.
+- **Excluded files:** `CLAUDE.md`, `CONVENTIONS.md`, `README.md`, `sortspec.md`, `wiki-index.md`, `wiki-changelog.md`, `log-index.md` — hidden from sidebar but accessible on disk.
 - **Templates folder:** `templates/`
 - **Attachments for projects:** inside each project's subfolder.

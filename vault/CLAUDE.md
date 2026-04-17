@@ -30,13 +30,13 @@ vault/                        ← Obsidian vault root
 ├── log/                      ← Session recaps (YYYY-MM-DD-HHMM.md)
 ├── wiki-index.md             ← Directory of all wiki entries by category (read this, don't glob)
 ├── wiki-changelog.md         ← Append-only record of wiki changes (newest-first)
-├── sessions-index.md         ← Session directory with dates and summaries (newest-first)
+├── log-index.md             ← Session directory with dates and summaries (newest-first)
 ```
 
 ## Navigating the notes
 
 - **wiki-index.md** — The authoritative directory of all entries, organized by category. Start here for any lookup.
-- **sessions-index.md** — Session log directory with dates and one-line summaries, newest-first. Check this for past decisions, discussions, or session history.
+- **log-index.md** — Session log directory with dates and one-line summaries, newest-first. Check this for past decisions, discussions, or session history.
 - **wiki-changelog.md** — Append-only record of all wiki changes, newest-first. Check this to see what changed and when.
 
 ## Entry basics
@@ -66,7 +66,7 @@ The notes are the user's second brain. **When the user asks any personal questio
 **Lookup order:**
 1. `wiki-index.md` — scan for relevant entries by type.
 2. Read matching pages in `wiki/[category]/` (frontmatter + body).
-3. `sessions-index.md` → recent session logs if the question is about past decisions or discussions.
+3. `log-index.md` → recent session logs if the question is about past decisions or discussions.
 4. If the notes fully answer the question, stop. Only search the web when the question needs real-world facts the notes can't store (live schedules, hours, weather, current prices) — and use notes context (destination, restaurant name, etc.) to make the search specific.
 5. Only after checking: say the info isn't available.
 

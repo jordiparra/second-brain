@@ -10,5 +10,5 @@ Personal notes maintained collaboratively with Claude. Rendered in Obsidian. See
 - **`sources/`** — Raw source material archive (immutable after capture).
 - **`log/`** — Session recaps with learnings and decisions.
 - **`wiki-index.md`** — Directory of all wiki entries by category.
-- **`sessions-index.md`** — Session directory with dates and summaries (newest-first).
+- **`log-index.md`** — Session directory with dates and summaries (newest-first).
 - **`wiki-changelog.md`** — Append-only record of wiki changes (newest-first).

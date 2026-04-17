@@ -3,10 +3,11 @@
   "propertiesInDocument": "hidden",
   "userIgnoreFilters": [
     "/CLAUDE.md",
+    "/CONVENTIONS.md",
     "\"/README.md\"",
     "/wiki-index.md",
     "/wiki-changelog.md",
-    "/sessions-index.md",
+    "/log-index.md",
     "/sortspec.md"
   ],
   "defaultViewMode": "preview",

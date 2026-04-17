@@ -18,7 +18,7 @@ second-brain/
 │   ├── log/                ← Empty — session recaps written by the /wrap skill
 │   ├── wiki-index.md       ← Directory of all entries, grouped by category
 │   ├── wiki-changelog.md   ← Append-only record of wiki changes (newest-first)
-│   ├── sessions-index.md   ← Directory of session logs with dates and summaries (newest-first)
+│   ├── log-index.md        ← Directory of session logs with dates and summaries (newest-first)
 │   └── .obsidian/          ← Obsidian settings: Bases, Bookmarks, plugins
 └── skills/                 ← 4 Claude Code skills
     ├── notes-ingest/       ← Capture sources into wiki entries
@@ -103,7 +103,7 @@ See **Using it** below for full details on each skill.
 | Skill | Purpose |
 |-------|---------|
 | `notes-ingest` | Process a source (article, URL, PDF, screenshot, pasted text) into wiki entries. Archives the raw source, creates entries, cross-links, updates the index. |
-| `notes-query` | Answer questions from the wiki. Reads `wiki-index.md` + `sessions-index.md`, drills into relevant pages, synthesizes. |
+| `notes-query` | Answer questions from the wiki. Reads `wiki-index.md` + `log-index.md`, drills into relevant pages, synthesizes. |
 | `notes-lint` | Audit the wiki for broken links, index drift, missing frontmatter, tag gaps, orphan pages. |
 | `wrap` | End-of-session skill. Writes a curated `log/YYYY-MM-DD-HHMM.md` with learnings, decisions, and course corrections, updates indexes, then prompts `/clear`. |
 
