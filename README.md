@@ -78,25 +78,25 @@ So Claude checks your notes before answering personal questions. Add a section l
 
 Adjust the path if you cloned somewhere else.
 
-### 4. Working directory
+### 4. Adding content, querying, linting
 
-**If you use [auto-mode](https://docs.claude.com/en/docs/claude-code/settings#permission-modes)** (Claude executes autonomously without stopping for routine permission prompts), you can capture and query from anywhere. The global `CLAUDE.md` snippet from step 3 tells Claude where the vault lives, and the skills `cd` into it themselves. Drop a PDF in `~/Downloads`, paste a URL mid-conversation, or ask a personal question from any project directory — it all routes correctly.
+**With [auto-mode](https://docs.claude.com/en/docs/claude-code/settings#permission-modes) on** (Claude runs autonomously without stopping for routine permission prompts), you can add notes, ask questions, and run the lint from any directory. The global `CLAUDE.md` snippet from step 3 tells Claude where the vault lives, and the skills `cd` into it themselves. Drop a PDF in `~/Downloads`, paste a URL mid-conversation, or ask a personal question from any project — it all routes correctly.
 
-For example, mid-session in an unrelated project directory, you can paste a link and ask Claude to save it:
+For example, mid-session in an unrelated project directory, paste a link and ask Claude to save it:
 
 ```
 > save this to the wiki: https://stephango.com/vault
 ```
 
-Claude recognises the soft-launch trigger, spawns `notes-ingest`, fetches the article, routes it to `wiki/articles/`, archives the raw HTML under `sources/articles/`, adds wikilinks to related entries (author, topics), updates `wiki-index.md`, and prepends a line to `wiki-changelog.md` — all without you leaving the directory you were working in.
+Claude recognises the soft-launch trigger, spawns `notes-ingest`, fetches the article, routes it to `wiki/articles/`, archives the raw HTML under `sources/articles/`, adds wikilinks (author, topics), updates `wiki-index.md`, and prepends a line to `wiki-changelog.md` — all without you leaving your current directory. Querying (*"any restaurant recs in Barcelona?"*) and linting (*"lint the wiki"*) work the same way — ask from anywhere.
 
-**Without auto-mode**, launch Claude from the vault to ingest content — less convenient, but avoids extra permission prompts:
+**Without auto-mode**, launch Claude from the vault — less convenient, but avoids extra permission prompts:
 
 ```sh
 cd ~/second-brain/vault && claude
 ```
 
-See **Using it** below for how ingestion, querying, and wrapping work in practice.
+See **Using it** below for full details on each skill.
 
 ## The four skills
 
