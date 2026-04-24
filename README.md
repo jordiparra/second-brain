@@ -11,14 +11,14 @@ second-brain/
 ├── vault/                  ← The Obsidian vault (open this in Obsidian)
 │   ├── CLAUDE.md           ← Structure and navigation (auto-loaded by Claude Code)
 │   ├── CONVENTIONS.md      ← Authoring rules (frontmatter, linking, placement, routing)
-│   ├── lists/              ← 16 Base views for browsing (Books, Movies, Trips, …)
+│   ├── lists/              ← 19 Base views for browsing (Books, Movies, Trips, …)
 │   ├── templates/          ← 32 entry templates (one per category)
-│   ├── wiki/               ← Empty — entries go here, grouped by category or project
+│   ├── wiki/               ← Empty — entries go here, grouped by category or project (+ `hubs/` for sub-category nodes)
 │   ├── sources/            ← Empty — raw source archive (immutable after capture)
 │   ├── log/                ← Empty — session recaps written by the /wrap skill
 │   ├── wiki-index.md       ← Directory of all entries, grouped by category
 │   ├── wiki-changelog.md   ← Append-only record of wiki changes (newest-first)
-│   ├── log-index.md        ← Directory of session logs with dates and summaries (newest-first)
+│   ├── sessions-index.md   ← Directory of session logs with dates and summaries (newest-first)
 │   └── .obsidian/          ← Obsidian settings: Bases, Bookmarks, plugins
 └── skills/                 ← 4 Claude Code skills
     ├── notes-ingest/       ← Capture sources into wiki entries
@@ -30,7 +30,7 @@ second-brain/
 ## How it works
 
 - **Everything is a markdown file.** Entries live in `wiki/`, grouped into category subfolders (`books/`, `trips/`, …) or project subfolders (`projects/[name]/dods/`, …).
-- **Frontmatter is the structure.** `category`, `context`, `tags`, plus category-specific properties (`author`, `destination`, `director`, …) drive Obsidian's Bases views and Graph View connections.
+- **Frontmatter is the structure.** `category` and `added` (required), plus `context`, `project`, `tags`, and category-specific properties (`author`, `destination`, `director`, …) drive Obsidian's Bases views and Graph View connections. Tags follow kepano's one rule: lowercase kebab-case, always plural.
 - **Wikilinks everywhere.** Entries cross-link through the body and through frontmatter (`author: "[[Liu Cixin]]"`). Unresolved links are fine — they're breadcrumbs for future pages.
 - **Claude handles the filing.** You capture, the skills classify and route per `CONVENTIONS.md`.
 
@@ -103,8 +103,8 @@ See **Using it** below for full details on each skill.
 | Skill | Purpose |
 |-------|---------|
 | `notes-ingest` | Process a source (article, URL, PDF, screenshot, pasted text) into wiki entries. Archives the raw source, creates entries, cross-links, updates the index. |
-| `notes-query` | Answer questions from the wiki. Reads `wiki-index.md` + `log-index.md`, drills into relevant pages, synthesizes. |
-| `notes-lint` | Audit the wiki for broken links, index drift, missing frontmatter, tag gaps, orphan pages. |
+| `notes-query` | Answer questions from the wiki. Reads `wiki-index.md` + `sessions-index.md`, drills into relevant pages, synthesizes. |
+| `notes-lint` | Audit the wiki for broken links, index drift, missing frontmatter, tag drift (auto-fixes casing/plural style per kepano's rule), orphan pages, missing hub pages. |
 | `wrap` | End-of-session skill. Writes a curated `log/YYYY-MM-DD-HHMM.md` with learnings, decisions, and course corrections, updates indexes, then prompts `/clear`. |
 
 ## Using it
@@ -131,7 +131,7 @@ Run `/wrap` at the end of a working session. It captures non-obvious context —
 
 ### Linting
 
-Run `/notes-lint` **weekly**, or after a burst of ingestion (e.g. 10+ new entries in a sitting). It catches broken wikilinks, index drift, missing tags, orphan pages, and missing hub pages. Weekly is enough for a wiki under ~500 entries; stretch to biweekly once the structure settles and ingestion slows.
+Run `/notes-lint` **weekly**, or after a burst of ingestion (e.g. 10+ new entries in a sitting). It catches broken wikilinks, index drift, missing tags, orphan pages, missing hub pages, and tag style drift (auto-fixes casing and pluralization per kepano's rule; reports judgment calls like singletons and near-duplicates for you to review). Weekly is enough for a wiki under ~500 entries; stretch to biweekly once the structure settles and ingestion slows.
 
 ## Viewing connections in Obsidian
 
