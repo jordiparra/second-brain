@@ -34,7 +34,7 @@ Clarify what the user is asking if ambiguous. Determine whether this is:
 1. Read `wiki-index.md` to identify which pages are likely relevant
 2. Read those pages
 3. If the index doesn't surface enough, use Grep to search across all `.md` files in `wiki/` and `sources/`
-4. For session history questions, also check `log-index.md` (newest-first) and relevant `log/` entries
+4. For session history questions, also check `sessions-index.md` and relevant `log/` entries
 
 ### 3. Synthesize an answer
 

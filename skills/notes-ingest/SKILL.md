@@ -49,6 +49,7 @@ Save the original source to `sources/` following the structure in CONVENTIONS.md
 - Project-scoped sources go under `sources/projects/[project]/`
 - Standalone sources go under `sources/[category]/` (e.g., `sources/articles/`)
 - Keep the original content intact — `sources/` is immutable after filing
+- For web-fetched content: save clean prose with the original wording intact — strip HTML, navigation, ads, and formatting noise, but preserve the author's sentences and structure. Include the source URL at the top. Never summarize or rephrase; the wiki entry is the synthesis, the source is the record.
 - **Scan for secrets before archiving.** If the source contains API keys, tokens, passwords, recovery phrases, card numbers, or anything that would be a breach if the vault leaked: redact before archiving (crop screenshots, blank cells in PDFs, strip credential lines), or extract just the useful text into a new file and discard the original. Reference secrets by location (`key in .env`, `token in 1Password`) or with `<REDACTED:type>` — never by value. See `CONVENTIONS.md` → Safety.
 
 ### 4. Create wiki entries
@@ -57,12 +58,13 @@ Based on the discussion, create or update entries in `wiki/`:
 
 - Determine the correct category and subfolder from CONVENTIONS.md's routing rules
 - Use the matching template from `templates/`
-- Set frontmatter properties per the schema. `category` and `tags` are required on every entry in a content folder (`wiki/[category]/`). Hub pages in `wiki/categories/` are exempt from tags — they stay minimal by design. `context` and `area` are optional and only added when they clearly apply.
-- **Wikilinks in frontmatter:** Any property referencing an entity (author, director, genre, city, maker, etc.) must use `[[wikilinks]]` — e.g., `author: "[[Liu Cixin]]"`, `genre: ["[[Science Fiction]]"]`, `city: "[[Barcelona]]"`. Plain strings are invisible to Graph View. Check the template for which properties take wikilinks.
-- **Thematic tags:** Think of tags like Twitter hashtags — each tag is a lightweight facet, and the combination creates specificity. Use as many as genuinely apply, no more. A quote with four natural facets gets four; a fund with seven gets seven. Don't pad to hit a number, don't trim a real facet to stay under one. Cover whichever of these are relevant: domain (`work`, `personal`), topic (`travel`, `ai`, `music`), type/instrument, geography, strategy, theme, cross-cutting connections. Syntax: plain lowercase kebab-case in an inline YAML list — `tags: [ai, prototype, research]`. No wikilinks, no hashtags, no spaces (Obsidian renders these as real tag nodes via the Graph View "Tags" filter). Check existing vocabulary (`grep -rh "^tags:" wiki/ log/`) to reuse terms, but create new tags freely when existing ones don't fit — the vocabulary grows organically.
+- Set frontmatter properties per the schema. `category`, `added`, and `tags` are required on every entry in a content folder (`wiki/[category]/`). Hub pages in `wiki/hubs/` are exempt from tags — they stay minimal by design. `context` and `project` are optional and only added when they clearly apply.
+- **Wikilinks in frontmatter:** Any property referencing an entity (author, director, genre, city, maker, project, etc.) must use `[[wikilinks]]` — e.g., `author: "[[Liu Cixin]]"`, `genre: ["[[Science Fiction]]"]`, `city: "[[Barcelona]]"`, `project: "[[Project Name]]"`. Plain strings are invisible to Graph View. Check the template for which properties take wikilinks.
+- **Project scoping:** When an entry belongs to a project, set `project:` as a wikilink to the project page (e.g., `project: "[[Project Name]]"`). This powers both project bases and Graph View edges to the project hub.
+- **Thematic tags:** Think of tags like Twitter hashtags — each tag is a lightweight facet, and the combination creates specificity. Use as many as genuinely apply, no more. A quote with four natural facets gets four; a fund with seven gets seven. Don't pad to hit a number, don't trim a real facet to stay under one. Cover whichever of these are relevant: domain (`work`, `personal`), topic (`travel`, `ai`, `research`), type/instrument, geography, strategy, theme, cross-cutting connections. **Style (kepano's one rule): tags are lowercase kebab-case and always plural** (`tools`, not `tool`; `keyboards`, not `keyboard`; `ideas`, not `idea`). Syntax: plain inline YAML list — `tags: [ai, research, prototypes]`. No wikilinks, no hashtags, no spaces (Obsidian renders these as real tag nodes via the Graph View "Tags" filter). For people, prefer `[[wikilinks]]` in body text; a first-name tag (e.g., `ana`) can coexist with an `[[Ana Lovelace]]` wikilink when it gives one-click cluster access. Check existing vocabulary (`grep -rh "^tags:" wiki/ log/`) to reuse terms, but create new tags freely when existing ones don't fit — the vocabulary grows organically. Lint will normalize casing/plural drift and surface singletons for review.
 - Project-scoped entries go under `wiki/projects/[project]/[category]/` per CONVENTIONS.md (e.g., `references/`, `prototypes/`, `dods/`)
 - Link to the raw source in the body and via `source:` frontmatter field if applicable
-- **Projects with DODs:** Always create individual DOD pages in `[project]/dods/` — one `.md` per DOD with an embedded base on the project page. Never use only a table on the project page — individual pages allow notes, design requirements, and decisions per DOD.
+- **Projects with DODs:** Always create individual DOD pages in `[project]/dods/` — one `.md` per DOD with an embedded base on the project page. Follow the existing project setup pattern. Never use only a table on the project page.
 
 ### 5. Cross-link
 
@@ -75,12 +77,12 @@ Linking happens at ingest time — don't defer it. For every entry created or up
 ### 6. Update the index and log
 
 - Add new entries to `wiki-index.md` in the correct category section, maintaining alphabetical order and updating counts
-- Prepend to `wiki-changelog.md` (newest-first) **one cohesive paragraph per ingest** covering the entire operation: `**YYYY-MM-DD** — Ingested [source title] into [pages created/updated], because [reason].` Use a capitalized verb (Ingested, Updated, Added, Created) leading the sentence. Enumerate affected files inside the paragraph rather than writing one entry per file. Never edit existing entries.
+- Prepend to `wiki-changelog.md` at the top of the entry list (below the header and `---`): `**YYYY-MM-DD** — Ingested [source title] — [pages created/updated, with wikilinks and paths].` Blank line between entries. Never edit previous entries.
 
 ### 7. Create hub pages if needed
 
 - **New category:** If this is the first entry of a new category, create a `.md` in `lists/` with an embedded base filtering for that category. Add it to the Lists bookmark group in `.obsidian/bookmarks.json`.
-- **New sub-category nodes:** If the entry introduces a new genre, product type, author (3+ books), director (3+ films), or other frontmatter value that multiple entries share, check if a hub page exists in `wiki/categories/`. If not, create one — minimal format: just `category` linking to the parent hub and a `# Title` heading. This connects the sub-category to the parent in Graph View. Examples: a new genre → `wiki/categories/Genre Name.md`, a new product type → `wiki/categories/Type Name.md` with `category: "[[Products]]"`.
+- **New sub-category nodes:** If the entry introduces a new genre, product type, author (3+ books), director (3+ films), or other frontmatter value that multiple entries share, check if a hub page exists in `wiki/hubs/`. If not, create one — minimal format: just `category` linking to the parent hub and a `# Title` heading. This connects the sub-category to the parent in Graph View. Examples: a new genre → `wiki/hubs/Genre Name.md`, a new product type → `wiki/hubs/Type Name.md` with `category: "[[Products]]"`.
 
 ## Guidelines
 

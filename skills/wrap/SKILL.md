@@ -17,7 +17,7 @@ You are writing a curated session recap for the personal notes. Run this from th
 ## Before you start
 
 1. Read the authoring conventions: `CONVENTIONS.md` (at the vault root).
-2. Read `log-index.md` (newest-first) to see existing sessions.
+2. Read `sessions-index.md` to see existing sessions.
 
 ## What to capture
 
@@ -37,7 +37,19 @@ Review the full conversation and extract **only what would help a future session
 - Implementation details that are in the code or commit history
 - Things already captured as wiki/ entries or Claude memory
 - Anything the user could re-derive by reading the current state of files
-- **Secrets.** Never write API keys, tokens, passwords, recovery phrases, card numbers, or any credential value into the log. If the session touched one, describe the action without echoing the value (*"rotated the gh OAuth token"*, not the token itself). See `CONVENTIONS.md` → Safety.
+- **Secrets of any kind** — see Safety below
+
+### Safety
+
+Session logs live under `log/` — same vault, same git history. The Safety rules in `CONVENTIONS.md` apply here too: **never write API keys, tokens, passwords, recovery phrases, card numbers, or any other credential value into a session log.**
+
+If the session involved credentials (debugging an auth flow, setting up an MCP server, discussing `.env` contents, pasting a token to inspect it):
+
+- **Reference by location, not value.** Write `used the token from gh auth token` — not the token itself. Preferred whenever the secret has a known home.
+- **Describe the pattern, not the payload.** Write `JWT with 1h TTL, signed with RS256` — not the encoded JWT.
+- **Redact in quoted output.** If a session log quotes a command's output that contained a secret, replace the value with `<REDACTED>` (or typed: `<REDACTED:api-key>`, `<REDACTED:jwt>`, `<REDACTED:card>****1234`). Lowercase kebab-case after the colon. Don't use `<YOUR_API_KEY>`-style placeholders for redaction — those are only for template/example code.
+
+See `CONVENTIONS.md` → Safety for the full rules. When unsure whether something is a secret, treat it as one.
 
 ### Course corrections specifically
 
@@ -103,19 +115,19 @@ Grep existing log tags (`grep -h "^tags:" log/*.md`) to stay consistent, but cre
 
 **Wikilinks in body text:** Link first mentions of wiki entities — projects, prototypes, trips, places, people, and concepts. Unresolved links are fine (they become breadcrumbs in Graph View). Don't over-link — skip generic terms and only link where the connection is meaningful.
 
-### 2. Prepend to `log-index.md`
+### 2. Prepend to `sessions-index.md`
 
-Prepend one row to the top of the table (newest-first):
+Insert one paragraph at the **top** of the entry list (below the header and `---` separator), so newest appears first. Never edit existing entries.
 
 ```
-| YYYY-MM-DD | [[YYYY-MM-DD-HHMM]] | One-line summary |
+**[[YYYY-MM-DD-HHMM]]** — One-line summary.
 ```
 
-Insert the new row directly below the header separator row. Never modify existing rows.
+Blank line between entries.
 
 ### 3. If wiki entries were added or modified
 
-- Prepend to `wiki-changelog.md` — one paragraph per **cohesive change thread**, added to the top (newest-first). Format: `**YYYY-MM-DD** — Capitalized verb describing what changed and why.` Use verbs like Ingested, Updated, Added, Fixed, Renamed, Created. Blank line between entries. Never edit existing entries. **One entry per cohesive change, not per edit** — a single thread of work across many files is one entry (enumerate the files inside the paragraph). Unrelated changes in the same session get separate entries. Follow-on fixes from an earlier change fold into that change's entry.
+- Prepend to `wiki-changelog.md` — one paragraph per change at the **top** of the entry list (below the header and `---` separator), newest first. Format: `**YYYY-MM-DD** — [Capitalized verb] [what changed and why, with wikilinks and paths].` Blank line between entries. Lead with an action verb (`Added`, `Updated`, `Ingested`, `Fixed`, `Renamed`, `Created`). Never edit previous entries.
 - Update `wiki-index.md` — add/remove entries in the relevant category section
 
 ## After writing
