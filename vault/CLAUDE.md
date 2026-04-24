@@ -16,7 +16,7 @@ vault/                        ← Obsidian vault root
 ├── templates/                ← One template per category
 ├── wiki/                     ← All entries
 │   ├── [category]/           ← Standalone entries by category (books/, articles/, prototypes/, etc.)
-│   ├── categories/           ← Hub pages for sub-categories (genres, product types, authors, directors)
+│   ├── hubs/                 ← Hub pages for sub-categories (genres, product types, authors, directors)
 │   ├── notes/                ← Living docs (AI workflow, setup, etc.)
 │   └── projects/             ← Project overviews + project-scoped content
 │       ├── [Project Name].md ← Project overview with embedded bases
@@ -29,23 +29,24 @@ vault/                        ← Obsidian vault root
 │   └── projects/[project]/   ← Project-specific sources
 ├── log/                      ← Session recaps (YYYY-MM-DD-HHMM.md)
 ├── wiki-index.md             ← Directory of all wiki entries by category (read this, don't glob)
-├── wiki-changelog.md         ← Append-only record of wiki changes (newest-first)
-├── log-index.md             ← Session directory with dates and summaries (newest-first)
+├── wiki-changelog.md         ← Append-only audit trail of wiki changes (newest at top)
+├── sessions-index.md         ← Session directory with dates and summaries (newest at top)
 ```
 
 ## Navigating the notes
 
 - **wiki-index.md** — The authoritative directory of all entries, organized by category. Start here for any lookup.
-- **log-index.md** — Session log directory with dates and one-line summaries, newest-first. Check this for past decisions, discussions, or session history.
-- **wiki-changelog.md** — Append-only record of all wiki changes, newest-first. Check this to see what changed and when.
+- **sessions-index.md** — Session log directory with one-line summaries (newest at top). Check this for past decisions, discussions, or session history.
+- **wiki-changelog.md** — Append-only audit trail of all wiki changes, newest at top. Check this to see what changed and when.
 
 ## Entry basics
 
 Every entry is a `.md` file with frontmatter properties:
 
 - `category` — Required. A `[[wikilink]]` to the category name (e.g., `"[[Books]]"`, `"[[Movies]]"`).
+- `added` — Required. Date the entry was added to this wiki. Format: `YYYY-MM-DD`.
 - `context` — Optional. Structured taxonomy for which "world" the entry belongs to (e.g., `work`, `personal`, `ai`). Define your own small fixed set.
-- `tags` — Optional. Lightweight facets for micro-clustering (e.g., `ai`, `music`, `design`).
+- `tags` — Required on content entries. Lightweight facets for micro-clustering (e.g., `ai`, `travel`, `design`). See CONVENTIONS.md for the full tag style rule.
 
 Entries also have category-specific properties visible in frontmatter — `author`, `genre`, `director`, `city`, `cuisine`, `type`, etc. — defined in the matching template in `templates/`. These properties use `[[wikilinks]]` for entity references to power Graph View connections.
 
@@ -66,7 +67,7 @@ The notes are the user's second brain. **When the user asks any personal questio
 **Lookup order:**
 1. `wiki-index.md` — scan for relevant entries by type.
 2. Read matching pages in `wiki/[category]/` (frontmatter + body).
-3. `log-index.md` → recent session logs if the question is about past decisions or discussions.
+3. `sessions-index.md` → recent session logs if the question is about past decisions or discussions.
 4. If the notes fully answer the question, stop. Only search the web when the question needs real-world facts the notes can't store (live schedules, hours, weather, current prices) — and use notes context (destination, restaurant name, etc.) to make the search specific.
 5. Only after checking: say the info isn't available.
 
@@ -74,4 +75,4 @@ The notes are the user's second brain. **When the user asks any personal questio
 
 ## Safety
 
-Never write secrets anywhere in the vault — API keys, tokens, passwords, recovery phrases, card numbers, or anything that would be a breach if the vault leaked. This applies to session logs and changelog entries too. Redact before archiving external sources. When referencing a secret, name its location (e.g., `key in .env`) or use `<REDACTED:type>`. See `CONVENTIONS.md` → Safety for the full rules.
+The vault is committed to git and may ingest external material that carries credentials. **Never write secrets anywhere in the vault** — not `wiki/`, `sources/`, `log/`, or any root index file. That means no API keys, tokens, passwords, recovery phrases, or card numbers, in any form. Redact before archiving external sources. When a secret must appear: reference by location (`key in .env`) for known-home values, or use `<REDACTED>` / `<REDACTED:type>` when quoting output. Never use `<YOUR_API_KEY>`-style placeholders to hide real secrets — those are for template code only. Full rules in `CONVENTIONS.md` → Safety.
