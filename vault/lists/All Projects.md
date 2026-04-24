@@ -10,8 +10,6 @@ properties:
     displayName: Project
   note.context:
     displayName: Context
-  note.area:
-    displayName: Area
   note.status:
     displayName: Status
 views:
@@ -20,7 +18,6 @@ views:
     order:
       - file.name
       - context
-      - area
       - status
     sort:
       - property: context
@@ -34,7 +31,6 @@ views:
         - 'context == "work"'
     order:
       - file.name
-      - area
       - status
     sort:
       - property: file.name

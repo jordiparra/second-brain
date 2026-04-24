@@ -9,8 +9,8 @@ properties:
     displayName: Prototype
   note.context:
     displayName: Context
-  note.area:
-    displayName: Area
+  note.project:
+    displayName: Project
   note.status:
     displayName: Status
   note.url:
@@ -21,7 +21,7 @@ views:
     order:
       - file.name
       - context
-      - area
+      - project
       - status
       - url
     sort:
@@ -34,7 +34,7 @@ views:
         - context == "work"
     order:
       - file.name
-      - area
+      - project
       - status
       - url
     sort:
