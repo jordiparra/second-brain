@@ -1,5 +1,6 @@
 ---
 category: "[[Show Episodes]]"
+added: 
 show: "[[]]"
 season: 
 episode: 

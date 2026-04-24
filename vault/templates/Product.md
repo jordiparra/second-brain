@@ -1,5 +1,6 @@
 ---
 category: "[[Products]]"
+added: 
 type: "[[]]"
 status: want
 maker: "[[]]"

@@ -1,9 +1,12 @@
 ---
 category: "[[Trips]]"
+added: 
+context: 
 destination: 
+travelers: 
 start: 
 end: 
-status: planning
+tags: [travel]
 ---
 
 # {{title}}
