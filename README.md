@@ -144,6 +144,15 @@ Press **⌘G** inside Obsidian to open Graph View. Every entry is a node, every 
 - The `lists/` Base views ship with sensible defaults. Tune sort orders, filters, and columns to taste.
 - The skills are generic — they read from `CONVENTIONS.md` at runtime, so your schema changes flow through automatically.
 
+## Coming later
+
+Two more skills live in the author's personal plugins but aren't public yet — they'll ship here (or as standalone repos) once they're generic enough to be useful outside one person's setup:
+
+- **`design-update`** — Generate team-ready status updates from a task app + the wiki.
+- **`sync-jira-tasks`** — Sync a design-backlog spreadsheet to matching Jira tickets.
+
+Both currently assume a specific task source, spreadsheet schema, and project naming. No ETA.
+
 ## Credits
 
 Inspired by:
