@@ -1,0 +1,19 @@
+{
+  "name": "second-brain",
+  "owner": {
+    "name": "jordiparra"
+  },
+  "metadata": {
+    "description": "Personal Notes / second-brain wiki system + the notes plugin (ingest, query, lint, wrap).",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "notes",
+      "source": "./plugins",
+      "description": "Skills for a personal Notes wiki built on the second-brain schema — ingest sources, query knowledge, lint for health, and wrap a session.",
+      "version": "0.2.0",
+      "keywords": ["notes", "wiki", "second-brain", "knowledge-base", "obsidian"]
+    }
+  ]
+}

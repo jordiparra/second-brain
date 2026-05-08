@@ -1,0 +1,6 @@
+---
+category: "[[Notes]]"
+added: 
+---
+
+# {{title}}

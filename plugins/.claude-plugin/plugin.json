@@ -1,0 +1,8 @@
+{
+  "name": "notes",
+  "version": "0.2.0",
+  "description": "Skills for a personal Notes wiki built on the second-brain schema (vault/ in this repo): ingest sources (notes-ingest), query knowledge (notes-query), lint for health (notes-lint), and wrap a session (wrap). Add a `## Knowledge base` section to your global ~/.claude/CLAUDE.md pointing at where your wiki lives so the skills can resolve paths.",
+  "author": {
+    "name": "jordiparra"
+  }
+}

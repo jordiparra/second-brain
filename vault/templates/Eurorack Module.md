@@ -1,0 +1,6 @@
+---
+category: "[[Eurorack]]"
+added: 
+---
+
+# {{title}}
