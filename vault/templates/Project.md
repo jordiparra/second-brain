@@ -3,6 +3,7 @@ category: "[[Projects]]"
 added: 
 context: 
 status: active
+tags: []
 created: {{date}}
 ---
 
@@ -17,7 +18,5 @@ Repo: `<path in Documents/>`
 Light overview — enough to understand the project at a glance. See the repo README for setup, architecture, and full details.
 
 ## Decisions
-
-Decision log with context. What we chose, what we tried, what didn't work, and why.
 
 ## Next steps

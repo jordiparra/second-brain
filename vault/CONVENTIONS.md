@@ -47,7 +47,44 @@ Subfolder names use **lowercase kebab-case** (e.g., `case-12345/`, `trip-citynam
 
 **lists/** — Browsing views. `.md` files with embedded ```` ```base ```` code blocks. One per browsable category. When a new category appears, create the `.md` and add it to the Bookmarks Lists group.
 
-**wiki/projects/** — Each project is a `.md` with frontmatter (category: project, context, status) and embedded bases. The body starts with a brief description, the repo path (`Repo: \`full path\``), and a light overview that links to the repo README for setup and full details. Wiki-only sections: decisions with rationale, operational setup, next steps, and future ideas. Project-specific entries live in category subfolders (`dods/`, `references/`, `prototypes/`, etc.). Create subfolders as needed per project. Entries under a project reference it via the `project:` wikilink property.
+**wiki/projects/** — Each project is a `.md` with frontmatter and embedded bases. Frontmatter is strict: `category`, `context`, `status`, `added`, `tags` — nothing else on the project page itself. Domain-specific properties (URLs, file paths, license) belong in the body, not frontmatter.
+
+The body has must-have and optional sections. Leave must-have sections empty if no content is available — never populate by guessing.
+
+**All projects — must-have sections:**
+
+1. **Description paragraph** — what it is, why it exists. No heading, first thing after `# Title`.
+2. **`Repo: \`path\``** — full path to the repo or project directory. Omit if no repo/directory exists.
+3. **`## How it works`** — light overview, enough to understand the project at a glance. For repo projects, point to the README for setup and full details.
+4. **`## Decisions`** — decision log with context. What was chosen, what was tried, why.
+5. **`## Next steps`**
+
+**All projects — optional sections (include when relevant):**
+
+- **`## Open questions`** — unresolved decisions parked for later.
+- **`## See also`** — related wiki pages, external links.
+- Any project-specific sections as needed (scheduling, specs, version history, etc.).
+
+**Work bets** (`context: work`) — product initiatives with a strategy, team, and DODs. In addition to the universal must-haves above, bets have these must-have sections:
+
+6. **`## Strategy`** — the thesis, pillars, or workstreams the bet is organized around.
+7. **`## Challenge`** — why this bet exists, what's working/not, competitive context.
+8. **`## Key metrics`** — targets and success criteria.
+9. **`## Definitions of Done`** — Base embed with views (All, by theme, by priority, by designer, etc.). Each DOD is its own page in `dods/`.
+10. **`## Key people`** — who's on the bet, their role, which DODs they own.
+11. **`## References`** — Base embed pulling `category: Reference` + `project: this bet`.
+12. **`## See also`** — links to external tools (design tracker, PRD folder, Groove page). Required for bets, optional for other projects.
+
+**Work bets — optional sections:**
+
+- **`## Core beliefs`** — strategic assumptions validated/invalidated against research.
+- **`## Design themes`** — thematic grouping of DODs for design coordination.
+- **`## Prototype candidates`** — prototype work needed, with owners.
+- **`## Key launches`** — named launch milestones.
+
+**Section order for bets:** Description → Strategy → Challenge → Key metrics → Core beliefs → DODs → Design themes → Prototype candidates → Key launches → Key people → References → Decisions → Next steps → See also.
+
+Project-specific entries live in category subfolders (`dods/`, `references/`, `prototypes/`, etc.). Create subfolders as needed per project. Entries under a project reference it via the `project:` wikilink property.
 
 **wiki/hubs/** — Hub pages for sub-category nodes: genres, product types, prolific authors (3+ books), prolific directors (3+ films). Minimal pages — just `category` linking to the parent hub (when applicable) and a heading. These create Graph View hierarchy: e.g., Products → Keyboards → individual keyboards. Genre pages have no `category` — they bridge across media types (Science Fiction connects both sci-fi books and movies). Create new hub pages when a sub-category value appears on 3+ entries. Note: this folder used to be `wiki/categories/`; the rename to `hubs/` avoids confusion with the `category:` property (which points to the top-level type: Books, Movies, etc.).
 
